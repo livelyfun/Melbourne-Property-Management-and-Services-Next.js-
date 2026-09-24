@@ -1,0 +1,228 @@
+/* ── Thumbnail button (replaces the plain div) ──────────── */
+.thumb {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #e0e0e0;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  display: block;
+  width: 100%;
+}
+
+.thumbImg {
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.thumb:hover .thumbImg {
+  transform: scale(1.07);
+}
+
+/* Hover overlay hint */
+.thumbOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thumb:hover .thumbOverlay {
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.thumb:focus-visible {
+  outline: 3px solid #005ce6;
+  outline-offset: 2px;
+}
+
+/* ── Lightbox backdrop ───────────────────────────────────── */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Main image wrapper ─────────────────────────────────── */
+.imgWrap {
+  position: relative;
+  width: min(90vw, 1100px);
+  height: min(80vh, 800px);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  animation: zoomIn 0.25s ease;
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.94); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+
+.fullImg {
+  object-fit: contain;
+}
+
+/* ── Close button ───────────────────────────────────────── */
+.close {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.5rem;
+  z-index: 10001;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: background 0.2s;
+  line-height: 1;
+  padding: 0;
+}
+
+.close:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.close:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+/* ── Prev / Next nav buttons ───────────────────────────── */
+.navBtn {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10001;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  font-size: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: background 0.2s;
+  padding-bottom: 3px;
+  line-height: 1;
+}
+
+.navBtn:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.navBtn:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+.navPrev { left: 1.25rem; }
+.navNext { right: 1.25rem; }
+
+/* ── Caption bar ────────────────────────────────────────── */
+.caption {
+  position: fixed;
+  bottom: 3.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.875rem;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.captionText {
+  font-weight: 500;
+}
+
+.counter {
+  opacity: 0.55;
+}
+
+/* ── Dot indicators ─────────────────────────────────────── */
+.dots {
+  position: fixed;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10001;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 90vw;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: background 0.25s, transform 0.25s;
+  padding: 0;
+}
+
+.dotActive {
+  background: #fff;
+  transform: scale(1.4);
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .imgWrap {
+    width: 96vw;
+    height: 70vh;
+  }
+
+  .navPrev { left: 0.5rem; }
+  .navNext { right: 0.5rem; }
+
+  .navBtn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.4rem;
+  }
+
+  .caption {
+    font-size: 0.8rem;
+    bottom: 3rem;
+  }
+
+  /* Hide dots on very small screens to avoid overflow */
+  .dots {
+    display: none;
+  }
+}

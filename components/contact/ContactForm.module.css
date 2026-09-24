@@ -1,0 +1,67 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background: var(--bg-white);
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  border: 1px solid #eaeaea;
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.fieldGroup label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+}
+
+.fieldGroup input, .fieldGroup select, .fieldGroup textarea {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.fieldGroup input:focus, .fieldGroup select:focus, .fieldGroup textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.fieldGroup input[aria-invalid="true"], .fieldGroup select[aria-invalid="true"] {
+  border-color: #dc3545;
+}
+
+.error {
+  color: #dc3545;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}
+
+.successState {
+  background: #f0fdf4;
+  padding: 3rem 2rem;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid #bbf7d0;
+}
+
+.successState h2 {
+  color: #166534;
+  margin-bottom: 1rem;
+}
+
+.successActions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}

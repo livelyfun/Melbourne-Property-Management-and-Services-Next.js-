@@ -1,0 +1,86 @@
+.section {
+  padding: 5rem 0;
+  background: #f8f9fa;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #005ce6;
+  letter-spacing: 2px;
+  margin-bottom: 0.75rem;
+}
+
+.heading {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  margin-bottom: 1rem;
+  color: #1a1a1a;
+}
+
+.sub {
+  font-size: 1.05rem;
+  color: #666;
+}
+
+/* ── 4 × 4 desktop grid ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
+}
+
+.item {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #e0e0e0;
+  cursor: pointer;
+}
+
+.img {
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.item:hover .img {
+  transform: scale(1.07);
+}
+
+/* CTA */
+.viewAll {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+.viewBtn {
+  display: inline-block;
+  border: 2px solid #005ce6;
+  color: #005ce6;
+  padding: 0.75rem 2rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.viewBtn:hover {
+  background: #005ce6;
+  color: #fff;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .grid { grid-template-columns: repeat(2, 1fr); gap: 0.4rem; }
+  .section { padding: 3.5rem 0; }
+}

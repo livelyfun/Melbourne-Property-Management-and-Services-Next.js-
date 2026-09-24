@@ -1,0 +1,74 @@
+.section {
+  position: relative;
+  padding: 7rem 0;
+  overflow: hidden;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.bgImg {
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.62);
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #fff;
+}
+
+.heading {
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  color: #fff;
+  margin-bottom: 1.25rem;
+}
+
+.sub {
+  font-size: 1.2rem;
+  color: rgba(255,255,255,0.82);
+  margin-bottom: 2.5rem;
+}
+
+.ctas {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.primary {
+  background: #005ce6;
+  color: #fff;
+  padding: 0.9rem 2.25rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.primary:hover { background: #004abf; }
+
+.secondary {
+  background: rgba(255,255,255,0.12);
+  border: 1.5px solid rgba(255,255,255,0.5);
+  color: #fff;
+  padding: 0.9rem 2.25rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  backdrop-filter: blur(4px);
+  transition: background 0.2s;
+}
+.secondary:hover { background: rgba(255,255,255,0.22); }
+

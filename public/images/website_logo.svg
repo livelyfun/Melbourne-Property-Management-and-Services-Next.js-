@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 430" width="100%" height="100%">
+  <defs>
+    <style>
+      .red-text {
+        fill: #E2231A;
+        font-family: Impact, "Arial Narrow", "Helvetica Neue", "Franklin Gothic Medium", sans-serif;
+      }
+      .roof-line {
+        fill: #FFFFFF;
+        stroke: #1A1A1A;
+        stroke-width: 4.5;
+        stroke-linejoin: miter;
+        stroke-miterlimit: 4;
+      }
+      .divider-line {
+        stroke: #1A1A1A;
+        stroke-width: 4.5;
+        stroke-linecap: square;
+      }
+    </style>
+  </defs>
+
+  <!-- BACKGROUND -->
+  <rect width="100%" height="100%" fill="#FFFFFF" />
+
+  <!-- ROOF STRUCTURE GRAPHIC -->
+  <g id="roof-structure">
+    <!-- Center Roof Rafter -->
+    <path class="roof-line" d="M 134,160 L 250,32 L 366,160 L 354,150 L 250,56 L 146,150 Z" />
+    
+    <!-- Left Roof Rafter -->
+    <path class="roof-line" d="M 52,134 L 130,72 L 196,124 L 186,134 L 130,92 L 62,144 Z" />
+    
+    <!-- Right Roof Rafter -->
+    <path class="roof-line" d="M 448,134 L 370,72 L 304,124 L 314,134 L 370,92 L 438,144 Z" />
+  </g>
+
+  <!-- TEXT SECTION -->
+  <!-- 1. MELBOURNE -->
+  <text class="red-text" 
+        x="250" y="222" 
+        text-anchor="middle" 
+        font-weight="900" 
+        font-size="68" 
+        textLength="400" 
+        lengthAdjust="spacingAndGlyphs">MELBOURNE</text>
+
+  <!-- 2. property MANAGEMENT -->
+  <text class="red-text" 
+        x="250" y="265" 
+        text-anchor="middle" 
+        font-size="37" 
+        textLength="400" 
+        lengthAdjust="spacingAndGlyphs">
+    <tspan font-family="'Arial Narrow', 'Helvetica Neue', sans-serif" font-weight="700">property </tspan>
+    <tspan font-weight="900">MANAGEMENT</tspan>
+  </text>
+
+  <!-- 3. — AND — -->
+  <g id="and-divider">
+    <line class="divider-line" x1="50" y1="293" x2="198" y2="293" />
+    <text class="red-text" 
+          x="250" y="302" 
+          text-anchor="middle" 
+          font-weight="900" 
+          font-size="28">AND</text>
+    <line class="divider-line" x1="302" y1="293" x2="450" y2="293" />
+  </g>
+
+  <!-- 4. SERVICES -->
+  <text class="red-text" 
+        x="250" y="392" 
+        text-anchor="middle" 
+        font-weight="900" 
+        font-size="94" 
+        textLength="400" 
+        lengthAdjust="spacingAndGlyphs">SERVICES</text>
+</svg>

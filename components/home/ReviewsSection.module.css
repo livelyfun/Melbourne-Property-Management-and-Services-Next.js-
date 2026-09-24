@@ -1,0 +1,180 @@
+.section {
+  padding: 5rem 0;
+  background: #f8f9fa;
+  overflow: hidden;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #005ce6;
+  letter-spacing: 2px;
+  margin-bottom: 0.75rem;
+}
+
+.heading {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  color: #1a1a1a;
+}
+
+/* Slider Layout */
+.sliderWrap {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  min-height: 280px;
+  perspective: 1000px;
+}
+
+.card {
+  position: absolute;
+  background: #fff;
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  transition: all 0.5s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.active {
+  z-index: 10;
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+.side {
+  z-index: 5;
+  opacity: 0.4;
+  cursor: pointer;
+}
+
+.side:nth-child(1) {
+  transform: translateX(-40%) scale(0.85);
+}
+
+.side:nth-child(3) {
+  transform: translateX(40%) scale(0.85);
+}
+
+.stars {
+  color: #f59e0b;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
+
+.text {
+  font-size: 1.05rem;
+  color: #444;
+  line-height: 1.7;
+  flex: 1;
+  font-style: italic;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.meta strong {
+  font-size: 1rem;
+  color: #1a1a1a;
+}
+
+.meta span {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+/* Controls */
+.arrow {
+  background: #fff;
+  border: 1px solid #eaeaea;
+  color: #333;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  z-index: 20;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  line-height: 1;
+  padding-bottom: 4px;
+}
+
+.arrow:hover {
+  background: #f0f0f0;
+  color: #005ce6;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d1d5db;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  padding: 0;
+}
+
+.dotActive {
+  background: #005ce6;
+  transform: scale(1.3);
+}
+
+@media (max-width: 900px) {
+  .card {
+    padding: 1.5rem;
+  }
+  .side:nth-child(1) {
+    transform: translateX(-15%) scale(0.9);
+    opacity: 0;
+    pointer-events: none;
+  }
+  .side:nth-child(3) {
+    transform: translateX(15%) scale(0.9);
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .arrow {
+    display: none;
+  }
+}
