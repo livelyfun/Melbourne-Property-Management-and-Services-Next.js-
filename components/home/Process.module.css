@@ -1,0 +1,149 @@
+.section {
+  position: relative;
+  overflow: hidden;
+  background: var(--dark);
+  color: var(--paper);
+  padding-block: clamp(5rem, 9vw, 9rem);
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.22;
+}
+
+.bgImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, var(--dark) 0%, rgba(14, 15, 12, 0.82) 44%, rgba(14, 15, 12, 0.7) 100%),
+    linear-gradient(to bottom, var(--dark) 0%, transparent 28%, transparent 72%, var(--dark) 100%);
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(3rem, 8vw, 8rem);
+  align-items: start;
+}
+
+.intro {
+  position: sticky;
+  top: calc(var(--nav-h) + 3rem);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.heading em {
+  color: #ff6b5f;
+}
+
+.copy {
+  max-width: 42ch;
+  color: rgba(251, 248, 241, 0.6);
+  line-height: 1.75;
+}
+
+.note {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(251, 248, 241, 0.42);
+}
+
+.note svg {
+  color: #ff8a80;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line-light);
+}
+
+.step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 4.5rem 1fr;
+  gap: 1.5rem;
+  padding-block: clamp(1.8rem, 3vw, 2.5rem);
+  border-bottom: 1px solid var(--line-light);
+}
+
+.number {
+  font-family: var(--font-display);
+  font-size: clamp(2.3rem, 3.5vw, 3.2rem);
+  line-height: 1;
+  color: rgba(251, 248, 241, 0.28);
+  transition: color 0.3s ease;
+}
+
+.step:hover .number {
+  color: #ff6b5f;
+}
+
+.stepBody h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin-bottom: 0.5rem;
+}
+
+.stepBody p {
+  max-width: 48ch;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: rgba(251, 248, 241, 0.55);
+}
+
+.line {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.step:hover .line {
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .intro {
+    position: static;
+    max-width: 560px;
+  }
+}
+
+@media (max-width: 560px) {
+  .step {
+    grid-template-columns: 3rem 1fr;
+    gap: 1rem;
+  }
+
+  .number {
+    font-size: 2rem;
+  }
+}

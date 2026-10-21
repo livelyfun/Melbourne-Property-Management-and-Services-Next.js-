@@ -1,5 +1,6 @@
 import HeroSlider from "@/components/home/HeroSlider";
 import ServicesSection from "@/components/home/ServicesSection";
+import Process from "@/components/home/Process";
 import GalleryPreview from "@/components/home/GalleryPreview";
 import WhyMPM from "@/components/home/WhyMPM";
 import ReviewsSection from "@/components/home/ReviewsSection";
@@ -10,6 +11,7 @@ export default function Home() {
     <main>
       <HeroSlider />
       <ServicesSection />
+      <Process />
       <GalleryPreview />
       <WhyMPM />
       <ReviewsSection />
@@ -17,4 +19,3 @@ export default function Home() {
     </main>
   );
 }
-

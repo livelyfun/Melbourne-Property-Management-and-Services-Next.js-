@@ -1,37 +1,121 @@
+import Image from "next/image";
+import Link from "next/link";
+import Icon from "@/components/ui/Icon";
+import Reveal from "@/components/ui/Reveal";
 import styles from "./WhyMPM.module.css";
 
 const reasons = [
-  { num: "01", title: "Melbourne Based", body: "We are a local Melbourne team that understands local properties and client expectations." },
-  { num: "02", title: "Residential & Commercial", body: "We work across homes, rentals, offices, and commercial properties." },
-  { num: "03", title: "Quality-Focused", body: "We take care with every job, delivering results that meet client expectations." },
-  { num: "04", title: "Professional Service", body: "Reliable, professional, and respectful of your property every step of the way." },
+  {
+    title: "Melbourne based",
+    body: "A local team that understands Melbourne properties and what clients expect. No out-of-town crews.",
+  },
+  {
+    title: "Residential & commercial",
+    body: "Homes, rentals, offices and commercial spaces — one reliable team for every property type.",
+  },
+  {
+    title: "Quality focused",
+    body: "We take care with every detail, delivering results that meet the standard we would want ourselves.",
+  },
+  {
+    title: "Professional service",
+    body: "Reliable, respectful and clear to deal with, from the first message to the final walkthrough.",
+  },
 ];
 
 export default function WhyMPM() {
   return (
-    <section className={styles.section}>
-      <div className="container">
-        <div className={styles.inner}>
-          <div className={styles.left}>
-            <span className={styles.eyebrow}>WHY CHOOSE US</span>
-            <h2 className={styles.heading}>The MPM Services Difference</h2>
-            <p className={styles.body}>We are a Melbourne-based property services team committed to delivering professional, quality work on every job — for residential, rental, and commercial clients.</p>
-            <a href="/contact" className={styles.cta}>Request a Quote</a>
+    <section className={`section ${styles.section}`}>
+      <div className={`container ${styles.inner}`}>
+        <div className={styles.media}>
+          <Reveal className={styles.mediaMain}>
+            <Image
+              src="/images/house-exterior.webp"
+              alt="Modern Melbourne home at dusk"
+              fill
+              sizes="(max-width: 980px) 100vw, 43vw"
+              className={styles.image}
+            />
+          </Reveal>
+
+          <Reveal delay={120} className={styles.mediaSmall}>
+            <Image
+              src="/images/window-clean.webp"
+              alt="Careful surface and window cleaning in a Melbourne home"
+              fill
+              sizes="(max-width: 980px) 45vw, 25vw"
+              className={styles.image}
+            />
+          </Reveal>
+
+          <div className={styles.ratingCard}>
+            <span className={styles.score}>5.0</span>
+            <span className={styles.ratingMeta}>
+              <span className={styles.stars} aria-hidden="true">
+                ★★★★★
+              </span>
+              <span>Average client rating</span>
+            </span>
           </div>
-          <div className={styles.right}>
-            {reasons.map(r => (
-              <div key={r.num} className={styles.item}>
-                <span className={styles.num}>{r.num}</span>
-                <div>
-                  <h4>{r.title}</h4>
-                  <p>{r.body}</p>
+
+          <span className={styles.mediaTag}>
+            <Icon name="map-pin" size={13} />
+            Melbourne · Local team
+          </span>
+        </div>
+
+        <div className={styles.content}>
+          <span className="eyebrow">04 — Why MPM</span>
+          <h2 className={`display h2 ${styles.heading}`}>
+            A local team,
+            <br />
+            <em>a higher standard.</em>
+          </h2>
+          <p className={styles.copy}>
+            We are a Melbourne-based property services team committed to delivering
+            professional, quality work on every job — for residential, rental and
+            commercial clients.
+          </p>
+
+          <div className={styles.reasons}>
+            {reasons.map((reason, index) => (
+              <Reveal key={reason.title} delay={index * 70}>
+                <div className={styles.reason}>
+                  <span className={styles.number} aria-hidden="true">
+                    0{index + 1}
+                  </span>
+                  <div>
+                    <h3>{reason.title}</h3>
+                    <p>{reason.body}</p>
+                  </div>
+                  <Icon name="check" size={16} className={styles.check} />
                 </div>
-              </div>
+              </Reveal>
             ))}
+          </div>
+
+          <div className={styles.ctaRow}>
+            <Link href="/contact" className="btn btn-primary">
+              Request a quote
+              <Icon name="arrow-right" size={16} />
+            </Link>
+            <a href="tel:+61451460307" className={styles.phone}>
+              <Icon name="phone" size={15} />
+              0451 460 307
+            </a>
+          </div>
+
+          <div className={styles.local}>
+            <span className={styles.localIcon}>
+              <Icon name="map-pin" size={16} />
+            </span>
+            <p>
+              <strong>Servicing Melbourne &amp; surrounds.</strong>
+              CBD, Richmond, South Yarra, Fitzroy, St Kilda, Carlton and beyond.
+            </p>
           </div>
         </div>
       </div>
     </section>
   );
 }
-

@@ -1,49 +1,105 @@
+import Image from "next/image";
 import Link from "next/link";
-import GalleryLightbox from "@/components/gallery/GalleryLightbox";
+import Icon from "@/components/ui/Icon";
+import Reveal from "@/components/ui/Reveal";
 import styles from "./GalleryPreview.module.css";
 
-// All 16 actual gallery images used in the 4×4 homepage grid
-const allImgs = [
-  { src: "/gallery/28947752_-2087775021236730-_1933692262219483355_o.jpg", alt: "MPM Services property work" },
-  { src: "/gallery/29662461_-2087774927903406-_186873304590838189_o.jpg", alt: "Property maintenance Melbourne" },
-  { src: "/gallery/30420503_-2118379494842949-_8355277186875145840_o.jpg", alt: "Steam cleaning results" },
-  { src: "/gallery/30424815_-2108796815801217-_1635916427438308022_o.jpg", alt: "Professional floor care" },
-  { src: "/gallery/33814017_-2170416399639258-_8398402273486569472_o.jpg", alt: "Strip and polish Melbourne" },
-  { src: "/gallery/33964491_-2170416142972617-_6091564240609476608_o.jpg", alt: "Polished floor results" },
-  { src: "/gallery/34730459_-2186837627997135-_1100437588365279232_n-2-.jpg", alt: "MPM property work" },
-  { src: "/gallery/34838324_-2186837634663801-_8718002085745917952_n.jpg", alt: "Property services result" },
-  { src: "/gallery/330x330.png", alt: "MPM Services completed work" },
-  { src: "/gallery/330x330-1-.png", alt: "Property cleaning Melbourne" },
-  { src: "/gallery/330x330-2-.png", alt: "Professional property service" },
-  { src: "/gallery/330x330-3-.png", alt: "Melbourne property care" },
-  { src: "/gallery/330x330-4-.png", alt: "Property maintenance result" },
-  { src: "/gallery/330x330-5-.png", alt: "Clean property result" },
-  { src: "/gallery/330x330-6-.png", alt: "MPM Services work" },
-  { src: "/gallery/330x330-7-.png", alt: "Professional cleaning result" },
+const tiles = [
+  {
+    src: "/images/living-warm.webp",
+    alt: "Softly styled living room with cream furnishings",
+    label: "Living spaces",
+    note: "Reset for everyday living",
+    className: "large",
+  },
+  {
+    src: "/images/bathroom.webp",
+    alt: "Modern bathroom with marble and timber details",
+    label: "Bathroom detail",
+    note: "End-of-lease finish",
+    className: "small",
+  },
+  {
+    src: "/images/bedroom.webp",
+    alt: "Freshly cleaned bedroom with soft textiles",
+    label: "Carpet care",
+    note: "Deep cleaned, gently handled",
+    className: "small",
+  },
+  {
+    src: "/images/living-beamed.webp",
+    alt: "Living room with warm timber flooring",
+    label: "Timber floors",
+    note: "Stripped, sealed, restored",
+    className: "tall",
+  },
 ];
 
 export default function GalleryPreview() {
   return (
-    <section className={styles.section}>
+    <section className={`section ${styles.section}`}>
       <div className="container">
-        <div className={styles.header}>
-          <span className={styles.eyebrow}>OUR WORK</span>
-          <h2 className={styles.heading}>Results You Can See</h2>
-          <p className={styles.sub}>
-            A selection of properties we&apos;ve worked on across Melbourne.
-          </p>
+        <div className="section-head">
+          <div className="section-head__copy">
+            <span className="eyebrow">03 — The finish</span>
+            <h2 className={`display h2 ${styles.heading}`}>
+              The details are
+              <br />
+              <em>the difference.</em>
+            </h2>
+          </div>
+          <div className="section-head__aside">
+            <p className="lead">
+              A look at the standard we bring to every property — considered spaces,
+              cared-for surfaces and a finish that feels complete.
+            </p>
+            <Link href="/gallery" className="link-arrow">
+              View full gallery
+              <Icon name="arrow-right" size={15} />
+            </Link>
+          </div>
         </div>
+      </div>
 
-        {/* 4 × 4 grid — rendered by the Client Component which also handles the lightbox */}
-        <div className={styles.grid}>
-          <GalleryLightbox images={allImgs} />
-        </div>
+      <div className={`container ${styles.mosaicWrap}`}>
+        <Reveal>
+          <div className={styles.mosaic}>
+            {tiles.map((tile) => (
+              <Link
+                key={tile.src}
+                href="/gallery"
+                className={`${styles.tile} ${styles[tile.className]}`}
+              >
+                <Image
+                  src={tile.src}
+                  alt={tile.alt}
+                  fill
+                  sizes="(max-width: 900px) 85vw, 45vw"
+                  className={styles.image}
+                />
+                <span className={styles.overlay} aria-hidden="true" />
+                <span className={styles.caption}>
+                  <span className={styles.captionLabel}>{tile.label}</span>
+                  <span className={styles.captionNote}>{tile.note}</span>
+                </span>
+                <span className={styles.arrow} aria-hidden="true">
+                  <Icon name="arrow-up-right" size={17} />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </Reveal>
+      </div>
 
-        <div className={styles.viewAll}>
-          <Link href="/gallery" className={styles.viewBtn}>
-            View Full Gallery →
-          </Link>
-        </div>
+      <div className={`container ${styles.footer}`}>
+        <span className={styles.count}>
+          <Icon name="sparkles" size={14} />
+          A closer look at the spaces and finishes we care for
+        </span>
+        <Link href="/gallery" className="btn btn-outline">
+          Explore the gallery
+          <Icon name="arrow-right" size={16} />
+        </Link>
       </div>
     </section>
   );

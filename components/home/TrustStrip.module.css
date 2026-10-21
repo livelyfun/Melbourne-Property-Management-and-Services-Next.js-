@@ -1,0 +1,48 @@
+.section {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--paper-2);
+  padding-block: 1.65rem;
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  overflow: hidden;
+}
+
+.lead {
+  flex: none;
+  padding-left: var(--gutter);
+  border-right: 1px solid var(--line-strong);
+  padding-right: 1.75rem;
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.leadInner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.leadInner svg {
+  color: var(--accent);
+}
+
+@media (max-width: 860px) {
+  .section {
+    padding-block: 1.2rem;
+    gap: 1rem;
+  }
+
+  .lead {
+    display: none;
+  }
+}

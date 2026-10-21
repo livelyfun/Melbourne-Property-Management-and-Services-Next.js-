@@ -1,53 +1,74 @@
 import Image from "next/image";
 import Link from "next/link";
+import Icon from "@/components/ui/Icon";
+import Reveal from "@/components/ui/Reveal";
+import { services } from "@/lib/data/services";
 import styles from "./ServicesSection.module.css";
-
-const services = [
-  {
-    title: "Steam Cleaning",
-    description: "Deep cleaning designed to refresh carpets, upholstery, and other surfaces. Great for residential, rental, and commercial properties.",
-    img: "/gallery/30424815_-2108796815801217-_1635916427438308022_o.jpg",
-    href: "/services/steam-cleaning",
-  },
-  {
-    title: "Strip & Polish",
-    description: "Restore and protect hard flooring surfaces with a professional strip and polish service that brings floors back to their best.",
-    img: "/gallery/33964491_-2170416142972617-_6091564240609476608_o.jpg",
-    href: "/services/strip-and-polish",
-  },
-  {
-    title: "Property Maintenance",
-    description: "Practical maintenance support that keeps properties presentable, functional, and well looked after — for landlords, agents, and owners.",
-    img: "/gallery/29662461_-2087774927903406-_186873304590838189_o.jpg",
-    href: "/services/property-maintenance",
-  },
-];
 
 export default function ServicesSection() {
   return (
-    <section className={styles.section}>
+    <section className={`section ${styles.section}`}>
       <div className="container">
-        <div className={styles.header}>
-          <span className={styles.eyebrow}>WHAT WE DO</span>
-          <h2 className={styles.heading}>Core Property Services</h2>
-          <p className={styles.sub}>Three specialist services to keep Melbourne properties clean, maintained, and looking their best.</p>
+        <div className="section-head">
+          <div className="section-head__copy">
+            <span className="eyebrow">01 — What we do</span>
+            <h2 className={`display h2 ${styles.heading}`}>
+              Three services.
+              <br />
+              <em>One standard.</em>
+            </h2>
+          </div>
+          <div className="section-head__aside">
+            <p className="lead">
+              Specialist care for the surfaces and spaces that matter most — for
+              homes, rentals and commercial properties across Melbourne.
+            </p>
+            <Link href="/services" className="link-arrow">
+              View all services
+              <Icon name="arrow-right" size={15} />
+            </Link>
+          </div>
         </div>
+
         <div className={styles.grid}>
-          {services.map((s) => (
-            <div key={s.title} className={styles.card}>
-              <div className={styles.imgWrap}>
-                <Image src={s.img} alt={s.title} fill className={styles.img} sizes="(max-width:768px) 100vw, 33vw" />
-              </div>
-              <div className={styles.body}>
-                <h3>{s.title}</h3>
-                <p>{s.description}</p>
-                <Link href={s.href} className={styles.link}>Learn More →</Link>
-              </div>
-            </div>
+          {services.map((service, index) => (
+            <Reveal
+              key={service.id}
+              delay={index * 90}
+              className={index === 0 ? styles.feature : styles.cardWrap}
+            >
+              <Link href={service.slug} className={styles.card}>
+                <Image
+                  src={service.cardImage ?? service.heroImage}
+                  alt={service.heroAlt}
+                  fill
+                  sizes={index === 0 ? "(max-width: 900px) 100vw, 58vw" : "(max-width: 900px) 100vw, 42vw"}
+                  className={styles.image}
+                />
+
+                <span className={styles.scrim} aria-hidden="true" />
+
+                <span className={styles.topRow}>
+                  <span className={styles.index}>0{index + 1}</span>
+                  <span className={styles.tag}>{service.eyebrow}</span>
+                </span>
+
+                <span className={styles.content}>
+                  <span className={styles.icon}>
+                    <Icon name={service.icon} size={20} />
+                  </span>
+                  <h3 className={styles.title}>{service.title}</h3>
+                  <p className={styles.copy}>{service.summary}</p>
+                  <span className={styles.link}>
+                    Explore service
+                    <Icon name="arrow-up-right" size={16} />
+                  </span>
+                </span>
+              </Link>
+            </Reveal>
           ))}
         </div>
       </div>
     </section>
   );
 }
-
